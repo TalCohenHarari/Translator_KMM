@@ -77,3 +77,11 @@ android {
         targetSdk = Deps.targetSdk
     }
 }
+
+//Telling to SqlDelight where to store the database
+sqldelight{
+    database("TranslateDatabase"){
+        packageName = "com.thc.translator_kmm.database"
+        sourceFolders = listOf("sqldelight")
+    }
+}
