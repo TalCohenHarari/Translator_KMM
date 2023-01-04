@@ -1,4 +1,4 @@
-package com.thc.translator_kmm.translate.domain.translate.history
+package com.thc.translator_kmm.translate.domain.history
 
 import com.thc.translator_kmm.core.domain.util.CommonFlow
 

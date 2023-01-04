@@ -1,4 +1,4 @@
-package com.thc.translator_kmm.translate.domain.translate.history
+package com.thc.translator_kmm.translate.domain.history
 
 data class HistoryItem(
     val id: Long?,

@@ -5,8 +5,8 @@ import com.squareup.sqldelight.runtime.coroutines.mapToList
 import com.thc.translator_kmm.core.domain.util.CommonFlow
 import com.thc.translator_kmm.core.domain.util.toCommonFlow
 import com.thc.translator_kmm.database.TranslateDatabase
-import com.thc.translator_kmm.translate.domain.translate.history.HistoryDataSource
-import com.thc.translator_kmm.translate.domain.translate.history.HistoryItem
+import com.thc.translator_kmm.translate.domain.history.HistoryDataSource
+import com.thc.translator_kmm.translate.domain.history.HistoryItem
 import kotlinx.coroutines.flow.map
 import kotlinx.datetime.Clock
 
