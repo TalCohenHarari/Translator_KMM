@@ -8,7 +8,8 @@ import com.thc.translator_kmm.database.TranslateDatabase
 actual class DatabaseDriverFactory(
     private val context: Context
 ) {
-    actual fun create(): SqlDriver{
-        return AndroidSqliteDriver(TranslateDatabase.Schema,context,"translate.db")
+    actual fun create(): SqlDriver {
+        //TODO: Shared Constants object and put there the db name
+        return AndroidSqliteDriver(TranslateDatabase.Schema, context, "translate.db")
     }
 }
