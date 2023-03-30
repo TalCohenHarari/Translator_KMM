@@ -1,6 +1,6 @@
 package com.thc.translator_kmm.translate.presentation
 
-import com.thc.translator_kmm.core.presentaion.UiLanguage
+import com.thc.translator_kmm.core.presentation.UiLanguage
 import com.thc.translator_kmm.translate.domain.translate.TranslateError
 
 data class TranslateState(

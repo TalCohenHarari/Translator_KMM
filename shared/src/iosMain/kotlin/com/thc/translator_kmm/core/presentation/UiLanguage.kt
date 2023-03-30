@@ -1,4 +1,4 @@
-package com.thc.translator_kmm.core.presentaion
+package com.thc.translator_kmm.core.presentation
 
 import com.thc.translator_kmm.core.domain.language.Language
 

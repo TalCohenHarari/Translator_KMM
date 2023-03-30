@@ -1,4 +1,4 @@
-package com.thc.translator_kmm.core.presentaion
+package com.thc.translator_kmm.core.presentation
 
 import androidx.annotation.DrawableRes
 import com.thc.translator_kmm.R

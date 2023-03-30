@@ -10,7 +10,7 @@ import com.thc.translator_kmm.translate.domain.history.HistoryItem
 import kotlinx.coroutines.flow.map
 import kotlinx.datetime.Clock
 
-class SqlDelightDataSource(
+class SqlDelightHistoryDataSource(
     val db: TranslateDatabase
 ) : HistoryDataSource {
 
