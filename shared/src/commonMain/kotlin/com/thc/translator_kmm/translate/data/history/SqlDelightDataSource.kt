@@ -11,8 +11,8 @@ import kotlinx.coroutines.flow.map
 import kotlinx.datetime.Clock
 
 class SqlDelightHistoryDataSource(
-    val db: TranslateDatabase
-) : HistoryDataSource {
+    db: TranslateDatabase
+): HistoryDataSource {
 
     private val queries = db.translateQueries
 

@@ -12,18 +12,16 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.thc.translator_kmm.android.core.theme.darkColors
-import com.thc.translator_kmm.android.core.theme.lightColors
 
 @Composable
-fun TranslatorThem(
+fun TranslatorTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) {
-        darkColors
+        com.thc.translator_kmm.android.core.theme.darkColors
     } else {
-        lightColors
+        com.thc.translator_kmm.android.core.theme.lightColors
     }
     val SfProText = FontFamily(
         Font(
