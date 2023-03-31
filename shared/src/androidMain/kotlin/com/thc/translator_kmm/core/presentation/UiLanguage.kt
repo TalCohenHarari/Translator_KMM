@@ -3,14 +3,15 @@ package com.thc.translator_kmm.core.presentation
 import androidx.annotation.DrawableRes
 import com.thc.translator_kmm.R
 import com.thc.translator_kmm.core.domain.language.Language
-import java.util.Locale
+import java.util.*
+
 
 actual class UiLanguage(
     @DrawableRes val drawableRes: Int,
     actual val language: Language
 ) {
 
-    fun toLocal(): Locale? {
+    fun toLocale(): Locale? {
         return when (language) {
             Language.ENGLISH -> Locale.ENGLISH
             Language.CHINESE -> Locale.CHINESE
@@ -19,6 +20,7 @@ actual class UiLanguage(
             Language.ITALIAN -> Locale.ITALIAN
             Language.JAPANESE -> Locale.JAPANESE
             Language.KOREAN -> Locale.KOREAN
+            Language.HEBREW -> Locale("he")
             else -> null
         }
     }
