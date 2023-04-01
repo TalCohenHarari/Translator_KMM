@@ -4,22 +4,29 @@ import android.speech.tts.TextToSpeech
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Scaffold
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
-import com.thc.translator_kmm.android.translate.presentation.components.LanguageDropDown
-import com.thc.translator_kmm.android.translate.presentation.components.SwapLanguagesButton
-import com.thc.translator_kmm.android.translate.presentation.components.TranslateTextField
-import com.thc.translator_kmm.android.translate.presentation.components.rememberTextToSpeech
+import com.thc.translator_kmm.android.R
+import com.thc.translator_kmm.android.translate.presentation.components.*
+import com.thc.translator_kmm.translate.domain.translate.TranslateError
 import com.thc.translator_kmm.translate.presentation.TranslateEvent
 import com.thc.translator_kmm.translate.presentation.TranslateState
+import kotlinx.coroutines.launch
 import java.util.*
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -29,17 +36,54 @@ fun TranslateScreen(
     onEvent: (TranslateEvent) -> Unit
 ) {
     val context = LocalContext.current
+    val floatingActionButtonSize = 65.dp
+    val lazyListState = rememberLazyListState()
+    val scope = rememberCoroutineScope()
+
+    LaunchedEffect(key1 = state.error) {
+        val message = when (state.error) {
+            TranslateError.SERVICE_UNAVAILABLE -> context.getString(R.string.error_service_unavailable)
+            TranslateError.CLIENT_ERROR -> context.getString(R.string.client_error)
+            TranslateError.SERVER_ERROR -> context.getString(R.string.server_error)
+            TranslateError.UNKNOWN_ERROR -> context.getString(R.string.unknown_error)
+            else -> null
+        }
+        message?.let {
+            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+            onEvent(TranslateEvent.OnErrorSeen)
+        }
+    }
+
     Scaffold(
         floatingActionButton = {
-
-        }
+            FloatingActionButton(
+                onClick = {
+                    onEvent(TranslateEvent.RecordAudio)
+                },
+                backgroundColor = MaterialTheme.colors.primary,
+                contentColor = MaterialTheme.colors.onPrimary,
+                modifier = Modifier.size(floatingActionButtonSize)
+            ) {
+                Icon(
+                    imageVector = ImageVector.vectorResource(id = R.drawable.mic),
+                    contentDescription = stringResource(id = R.string.record_audio)
+                )
+            }
+        },
+        floatingActionButtonPosition = FabPosition.Center
     ) { padding ->
         LazyColumn(
+            state = lazyListState,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(padding)
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+                .padding(padding),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            contentPadding = PaddingValues(
+                start = 16.dp,
+                end = 16.dp,
+                top = 16.dp,
+                bottom = 16.dp * 2 + floatingActionButtonSize
+            )
         ) {
             item {
                 Row(
@@ -112,7 +156,7 @@ fun TranslateScreen(
                         Toast.makeText(
                             context,
                             context.getString(
-                                com.thc.translator_kmm.android.R.string.copied_to_clipboard
+                                R.string.copied_to_clipboard
                             ),
                             Toast.LENGTH_LONG
                         ).show()
@@ -131,6 +175,28 @@ fun TranslateScreen(
                     },
                     onTextFieldClick = {
                         onEvent(TranslateEvent.EditTranslation)
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+
+            item {
+                if (state.history.isNotEmpty()) {
+                    Text(
+                        text = stringResource(
+                            id = R.string.history
+                        ),
+                        style = MaterialTheme.typography.h2
+                    )
+                }
+            }
+
+            items(state.history) { item ->
+                TranslateHistoryItem(
+                    item = item,
+                    onClick = {
+                        onEvent(TranslateEvent.SelectHistoryItem(item))
+                        scope.launch { lazyListState.animateScrollToItem(0) }
                     },
                     modifier = Modifier.fillMaxWidth()
                 )
