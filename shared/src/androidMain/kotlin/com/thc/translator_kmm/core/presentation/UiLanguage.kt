@@ -20,6 +20,8 @@ actual class UiLanguage(
             Language.ITALIAN -> Locale.ITALIAN
             Language.JAPANESE -> Locale.JAPANESE
             Language.KOREAN -> Locale.KOREAN
+            Language.ARABIC -> Locale("ar")
+            Language.RUSSIAN -> Locale("ru")
             Language.HEBREW -> Locale("he")
             else -> null
         }
