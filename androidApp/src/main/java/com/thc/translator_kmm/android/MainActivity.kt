@@ -18,6 +18,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.thc.translator_kmm.android.core.presentation.Routes
+import com.thc.translator_kmm.android.core.theme.TranslatorTheme
 import com.thc.translator_kmm.android.translate.presentation.AndroidTranslateViewModel
 import com.thc.translator_kmm.android.translate.presentation.TranslateScreen
 import com.thc.translator_kmm.translate.presentation.TranslateEvent
