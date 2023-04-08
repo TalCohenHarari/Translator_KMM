@@ -1,11 +1,21 @@
 import SwiftUI
 import shared
 
-struct ContentView: View {
-	let greet = Greeting().greet()
 
-	var body: some View {
-		Text(greet)
+// ignoresSafeArea = ignore the status bar
+struct ContentView: View {
+    
+    private let appMpdule = AppModule()
+    
+    var body: some View {
+        ZStack {
+            Color.background
+                .ignoresSafeArea()
+            TranslateScreen(
+                historyDatasouece: appMpdule.historyDataSource,
+                translateUseCase: appMpdule.translateUseCase
+            )
+        }
 	}
 }
 
