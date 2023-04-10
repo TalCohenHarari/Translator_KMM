@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.thc.translator_kmm.android.core.utils.textDp
 import com.thc.translator_kmm.core.presentation.UiLanguage
 
 @Composable
@@ -29,7 +30,8 @@ fun LanguageDropDownItem(
         )
         Spacer(modifier = Modifier.width(16.dp))
         Text(
-            text = language.language.langName
+            text = language.language.langName,
+            fontSize = 16.dp.textDp()
         )
     }
 }

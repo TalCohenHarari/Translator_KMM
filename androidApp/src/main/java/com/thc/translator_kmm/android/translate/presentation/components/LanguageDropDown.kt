@@ -2,6 +2,8 @@ package com.thc.translator_kmm.android.translate.presentation.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.Icon
@@ -31,25 +33,31 @@ fun LanguageDropDown(
 ) {
     Box(modifier = modifier) {
         DropdownMenu(
-            modifier = Modifier.height((LocalConfiguration.current.screenHeightDp / 1.5).dp),
             expanded = isOpen,
             onDismissRequest = onDismiss
         ) {
-            UiLanguage.allLanguages.forEach { language ->
-                LanguageDropDownItem(
-                    language = language,
-                    onClick = {
-                        onSelectLanguage(language)
-                    },
-                    modifier = Modifier.fillMaxWidth()
-                )
-            }
+            LazyColumn(
+                modifier = Modifier
+                    .height((LocalConfiguration.current.screenHeightDp / 1.3).dp)
+                    .width(200.dp),
+                content = {
+                    items(UiLanguage.allLanguages) { language ->
+                        LanguageDropDownItem(
+                            language = language,
+                            onClick = {
+                                onSelectLanguage(language)
+                            },
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                }
+            )
         }
         Row(
             modifier = Modifier
                 .clip(RoundedCornerShape(8.dp))
                 .clickable(onClick = onClick)
-                .padding(vertical = 16.dp,horizontal = 2.dp)
+                .padding(vertical = 16.dp, horizontal = 2.dp)
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
@@ -65,8 +73,8 @@ fun LanguageDropDown(
                 color = LightBlue
             )
             Icon(
-                imageVector = if(isOpen) Icons.Default.ArrowDropUp else Icons.Default.ArrowDropDown,
-                contentDescription = if(isOpen) {
+                imageVector = if (isOpen) Icons.Default.ArrowDropUp else Icons.Default.ArrowDropDown,
+                contentDescription = if (isOpen) {
                     stringResource(id = com.thc.translator_kmm.android.R.string.close)
                 } else {
                     stringResource(id = com.thc.translator_kmm.android.R.string.open)
