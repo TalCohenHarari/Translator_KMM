@@ -95,10 +95,7 @@ private extension TranslateTextField {
                         .padding(.bottom)
                     }
                 )
-                .onAppear{
-                    // Remove the background of the textEditor to visible our gradientSutface
-                    UITextView.appearance().backgroundColor = .clear
-                }
+                .removeTextEditorBackground()
         }
     }
     
@@ -176,6 +173,4 @@ private extension TranslateTextField {
             }
         }
     }
-    
-    
 }

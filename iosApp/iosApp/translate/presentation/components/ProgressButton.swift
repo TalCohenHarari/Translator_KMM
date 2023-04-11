@@ -24,14 +24,12 @@ struct ProgressButton: View {
         ){
             if isLoading{
                 ProgressView()
-                    .animation(.easeInOut, value: isLoading)
                     .padding(5)
                     .background(Color.primaryColor)
                     .cornerRadius(100)
                     .progressViewStyle(CircularProgressViewStyle(tint: .white))
             } else {
                 Text(text.uppercased())
-                            .animation(.easeInOut, value: isLoading)
                             .padding(.horizontal)
                             .padding(.vertical, 5)
                             .font(.body.weight(.bold))
@@ -40,6 +38,7 @@ struct ProgressButton: View {
                             .cornerRadius(100)
             }
         }
+        .animation(.easeInOut, value: isLoading)
     }
 }
 
