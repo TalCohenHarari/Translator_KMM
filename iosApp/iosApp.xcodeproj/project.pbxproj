@@ -23,6 +23,7 @@
 		3F94FEA429D8AC0900653412 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94FEA329D8AC0900653412 /* Colors.swift */; };
 		3FCAD59229E1E7EA00BE68E3 /* TextToSpeach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCAD59129E1E7EA00BE68E3 /* TextToSpeach.swift */; };
 		3FCAD59429E1E9D900BE68E3 /* TranslateHistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCAD59329E1E9D900BE68E3 /* TranslateHistoryItem.swift */; };
+		3FDAAF6629E59EC10058928E /* ViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDAAF6529E59EC10058928E /* ViewExt.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		3F94FEA329D8AC0900653412 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		3FCAD59129E1E7EA00BE68E3 /* TextToSpeach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeach.swift; sourceTree = "<group>"; };
 		3FCAD59329E1E9D900BE68E3 /* TranslateHistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateHistoryItem.swift; sourceTree = "<group>"; };
+		3FDAAF6529E59EC10058928E /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			children = (
 				3F94FEA329D8AC0900653412 /* Colors.swift */,
 				3F75FE9B29E01BA400526E32 /* GradientSurface.swift */,
+				3FDAAF6529E59EC10058928E /* ViewExt.swift */,
 			);
 			path = presentation;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				3F75FE9C29E01BA400526E32 /* GradientSurface.swift in Sources */,
 				3F75FE9029DF416700526E32 /* LanguageDropDownItem.swift in Sources */,
+				3FDAAF6629E59EC10058928E /* ViewExt.swift in Sources */,
 				3F75FE9E29E01DBE00526E32 /* LanguageDisplay.swift in Sources */,
 				3FCAD59229E1E7EA00BE68E3 /* TextToSpeach.swift in Sources */,
 				3F75FE9429DF473A00526E32 /* SmallLanguageIcon.swift in Sources */,

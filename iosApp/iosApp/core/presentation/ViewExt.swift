@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+import SwiftUI
+
 extension View {
     @ViewBuilder
     func removeTextEditorBackground() -> some View {
