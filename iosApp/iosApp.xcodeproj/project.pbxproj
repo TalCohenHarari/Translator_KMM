@@ -23,6 +23,7 @@
 		3F94FEA429D8AC0900653412 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94FEA329D8AC0900653412 /* Colors.swift */; };
 		3FC397BE29E88FA3003D1476 /* MicrophonePowerObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC397BD29E88FA3003D1476 /* MicrophonePowerObserver.swift */; };
 		3FC397C029E896D1003D1476 /* IOSVoiceToTextParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC397BF29E896D1003D1476 /* IOSVoiceToTextParser.swift */; };
+		3FC397C329E89ED4003D1476 /* IOSVoiceToTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC397C229E89ED4003D1476 /* IOSVoiceToTextViewModel.swift */; };
 		3FCAD59229E1E7EA00BE68E3 /* TextToSpeach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCAD59129E1E7EA00BE68E3 /* TextToSpeach.swift */; };
 		3FCAD59429E1E9D900BE68E3 /* TranslateHistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCAD59329E1E9D900BE68E3 /* TranslateHistoryItem.swift */; };
 		3FDAAF6629E59EC10058928E /* ViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDAAF6529E59EC10058928E /* ViewExt.swift */; };
@@ -59,6 +60,7 @@
 		3F94FEA329D8AC0900653412 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		3FC397BD29E88FA3003D1476 /* MicrophonePowerObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophonePowerObserver.swift; sourceTree = "<group>"; };
 		3FC397BF29E896D1003D1476 /* IOSVoiceToTextParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSVoiceToTextParser.swift; sourceTree = "<group>"; };
+		3FC397C229E89ED4003D1476 /* IOSVoiceToTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSVoiceToTextViewModel.swift; sourceTree = "<group>"; };
 		3FCAD59129E1E7EA00BE68E3 /* TextToSpeach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeach.swift; sourceTree = "<group>"; };
 		3FCAD59329E1E9D900BE68E3 /* TranslateHistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateHistoryItem.swift; sourceTree = "<group>"; };
 		3FDAAF6529E59EC10058928E /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		3FC397BB29E88F53003D1476 /* voice_to_text */ = {
 			isa = PBXGroup;
 			children = (
+				3FC397C129E89EB3003D1476 /* presentation */,
 				3FC397BC29E88F88003D1476 /* data */,
 			);
 			path = voice_to_text;
@@ -153,6 +156,14 @@
 				3FC397BF29E896D1003D1476 /* IOSVoiceToTextParser.swift */,
 			);
 			path = data;
+			sourceTree = "<group>";
+		};
+		3FC397C129E89EB3003D1476 /* presentation */ = {
+			isa = PBXGroup;
+			children = (
+				3FC397C229E89ED4003D1476 /* IOSVoiceToTextViewModel.swift */,
+			);
+			path = presentation;
 			sourceTree = "<group>";
 		};
 		7555FF72242A565900829871 = {
@@ -320,6 +331,7 @@
 				3F75FE9A29DF4BDC00526E32 /* TranslateScreen.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				3FCAD59429E1E9D900BE68E3 /* TranslateHistoryItem.swift in Sources */,
+				3FC397C329E89ED4003D1476 /* IOSVoiceToTextViewModel.swift in Sources */,
 				3F75FEA229E0205900526E32 /* TranslateTextField.swift in Sources */,
 				3FC397C029E896D1003D1476 /* IOSVoiceToTextParser.swift in Sources */,
 			);
