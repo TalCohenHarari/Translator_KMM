@@ -66,7 +66,7 @@ fun VoiceRecorderDisplay(
                     // To draw our rectangle for each ratio
                     .forEachIndexed { index, ratio ->
                         //Getting the top start 'y' of our ratio item
-                        val yTopStart = center.y - (size.height / 2) * ratio
+                        val yTopStart = center.y - (size.height / 2f) * ratio
                         drawRoundRect(
                             color = primary,
                             topLeft = Offset(

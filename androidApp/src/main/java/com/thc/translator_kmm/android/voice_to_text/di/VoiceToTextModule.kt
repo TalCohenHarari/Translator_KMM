@@ -1,6 +1,6 @@
 package com.thc.translator_kmm.android.voice_to_text.di
 
-import com.thc.translator_kmm.TranslateApp
+import android.app.Application
 import com.thc.translator_kmm.android.voice_to_text.data.AndroidVoiceToTextParser
 import com.thc.translator_kmm.voice_to_text.domain.VoiceToTextParser
 import dagger.Module
@@ -15,6 +15,6 @@ object VoiceToTextModule {
 
     @Provides
     @ViewModelScoped
-    fun provideVoiceToTextParser(app: TranslateApp): VoiceToTextParser =
+    fun provideVoiceToTextParser(app: Application): VoiceToTextParser =
         AndroidVoiceToTextParser(app)
 }

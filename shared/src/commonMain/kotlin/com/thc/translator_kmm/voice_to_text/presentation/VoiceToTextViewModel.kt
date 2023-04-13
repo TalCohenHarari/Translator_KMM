@@ -15,21 +15,25 @@ class VoiceToTextViewModel(
     private val viewModelScope = coroutineScope ?: CoroutineScope(Dispatchers.Main)
 
     private val _state = MutableStateFlow(VoiceToTextState())
-    val state = _state.combine(parser.state) { state, voiceParser ->
+    val state = _state.combine(parser.state) { state, voiceResult ->
         state.copy(
-            spokenText = voiceParser.result,
-            recordError = voiceParser.error,
+            spokenText = voiceResult.result,
+            recordError = if (state.canRecord) {
+                voiceResult.error
+            } else {
+                "Can't record without permission"
+            },
             displayState = when {
-                voiceParser.error != null -> DisplayState.ERROR
-                voiceParser.result.isNotBlank() && voiceParser.isSpeaking.not() -> {
-                    DisplayState.DISPLAY_RESULTS
+                !state.canRecord || voiceResult.error != null -> DisplayState.ERROR
+                voiceResult.result.isNotBlank() && !voiceResult.isSpeaking -> {
+                    DisplayState.DISPLAYING_RESULTS
                 }
-                voiceParser.isSpeaking -> DisplayState.SPEAKING
+                voiceResult.isSpeaking -> DisplayState.SPEAKING
                 else -> DisplayState.WAITING_TO_TALK
             }
         )
     }
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), VoiceToTextState())
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), VoiceToTextState())
         .toCommonStateFlow()
 
     init {
@@ -37,14 +41,15 @@ class VoiceToTextViewModel(
             while (true) {
                 if (state.value.displayState == DisplayState.SPEAKING) {
                     _state.update {
-                        it.copy(powerRatios = it.powerRatios + parser.state.value.powerRatio)
+                        it.copy(
+                            powerRatios = it.powerRatios + parser.state.value.powerRatio
+                        )
                     }
-                    delay(50)
                 }
+                delay(50L)
             }
         }
     }
-
 
     fun onEvent(event: VoiceToTextEvent) {
         when (event) {
@@ -61,6 +66,7 @@ class VoiceToTextViewModel(
     }
 
     private fun toggleRecording(languageCode: String) {
+        _state.update { it.copy(powerRatios = emptyList()) }
         parser.cancel()
         if (state.value.displayState == DisplayState.SPEAKING) {
             parser.stopListening()

@@ -9,8 +9,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class AndroidVoiceToTextParser @Inject constructor(
-    private val parser:VoiceToTextParser
+class AndroidVoiceToTextViewModel @Inject constructor(
+    private val parser: VoiceToTextParser
 ) : ViewModel() {
 
     private val viewModel by lazy {
@@ -22,7 +22,7 @@ class AndroidVoiceToTextParser @Inject constructor(
 
     val state = viewModel.state
 
-    fun onEvent(event:VoiceToTextEvent){
+    fun onEvent(event: VoiceToTextEvent) {
         viewModel.onEvent(event)
     }
 }
